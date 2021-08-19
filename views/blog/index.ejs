@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <%- include ../navbar_layout %>
+    </header>
+
+    <div class="container p-3">
+        <div class="container py-3">
+            <a class="btn btn-primary" href="/blog/add">เขียนบทความ</a>
+        </div>
+        <hr>
+        <% if(messages.success) { %>
+            <div class="alert alert-success" role="alert">
+                <%= messages.success %>
+            </div>
+            <% } %>
+                <div>
+                    <% Object.values(Blogs).forEach(function(blog){ %>
+                        <h4>
+                            <%= blog.title %>
+                        </h4>
+                        <p>ผู้เขียน :
+                            <%= blog.name %>
+                        </p>
+
+                        <a class="btn btn-warning" href="/blog/edit/<%= blog._id %>">แก้ไข</a>
+                        <a class="btn btn-danger" href="/blog/delete/<%= blog._id %>" onclick="return alert('Are you sure?')">ลบ</a>
+                        <hr>
+                        <%})%>
+                </div>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+</html>

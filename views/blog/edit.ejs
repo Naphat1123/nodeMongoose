@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <header>
+        <%- include ../navbar_layout %>
+    </header>
+
+    <div class="container py-5">
+        <% if(messages.error) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= messages.error %>
+            </div>
+            <% } %>
+
+                <% if(messages.success) { %>
+                    <div class="alert alert-success" role="alert">
+                        <%= messages.success %>
+                    </div>
+                    <% } %>
+
+                        <form action="/blog/update" method="POST">
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput" class="form-label">ชื่อรายการ</label>
+                                <input type="text" name="title" class="form-control" id="formGroupExampleInput" placeholder="ชื่อรายการ" value="<%= data.title %>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput2" class="form-label">บทความ</label>
+                                <input type="text" name="blog" class="form-control" id="formGroupExampleInput2" placeholder="บทความ" value="<%= data.blog %>">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput3" class="form-label">ชื่อผู้เขียน</label>
+                                <input type="text" name="name" class="form-control" id="formGroupExampleInput3" placeholder="ชื่อผู้เขียน" value="<%= data.name %>">
+                            </div>
+                            <input type="hidden" value="<%= data._id %>" name="id">
+                            <input class="btn btn-primary" type="submit" value="แก้ไขข้อมูล">
+                        </form>
+
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+</html>
